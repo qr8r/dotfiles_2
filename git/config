@@ -1,0 +1,94 @@
+[init]
+  defaultBranch     = trunk
+
+
+
+[push]
+
+
+  default         = upstream                         # push current branch to its upstream by default
+  autoSetupRemote = true                             # set upstream automatically on first push (not on branch creation)
+  followTags      = true                             # push annotated tags reachable from pushed commits
+
+[pull]
+  rebase          = true                             # rebase (not merge) when pulling
+  ff              = only                             # refuse merge commits on pull (fast-forward only)
+
+[rebase]
+  autoStash       = true                             # auto-stash dirty worktree during rebase
+  autoSquash      = true                             # autosquash fixup!/squash! commits during interactive rebase
+  updateRefs      = true                             # keep dependent branch refs updated during rebase
+
+[branch]
+  autoSetupRebase = always                           # new branches default to rebasing on pull
+
+[fetch]
+  prune           = true                             # prune deleted remote-tracking branches on fetch
+  pruneTags       = true                             # prune deleted remote-tracking tags on fetch
+
+[diff]
+  algorithm       = histogram                        # more readable/stable diffs than Myers in many cases
+  colorMoved      = zebra                            # highlight moved code blocks
+  mnemonicPrefix  = true                             # use i/w/c prefixes instead of a/b in patches
+  renameLimit     = 9999                             # higher rename search limit for rename-heavy repos
+
+[merge]
+  conflictStyle   = zdiff3                           # show base + both sides during conflicts
+
+[gc]
+  writeCommitGraph = true                            # speed up history queries with commit-graph
+
+[maintenance]
+  auto            = true                             # run incremental maintenance opportunistically
+  strategy        = incremental                      # keep maintenance work small and frequent
+
+[pack]
+  useSparse       = true                             # reduce memory use while packing (helps large repos)
+
+[tag]
+# gpgSign         = true                             # sign annotated tags by default
+
+[gpg]
+# format          = ssh                              # use SSH keys for signing
+
+[user]
+  useConfigOnly   = true                             # refuse commits without explicit identity config
+# signingkey      = ~/.ssh/id_ed25519.pub            # SSH signing public key
+
+[core]
+  pager           = "less -FRX"                     # avoid bat for non-diff output
+
+[pager]
+  diff            = delta                            # ensure delta is used for diffs
+  log             = delta                            # ensure delta is used for logs that invoke a pager
+  show            = delta                            # ensure delta is used for `git show`
+
+[interactive]
+  singleKey       = true                             # faster single-key prompts in interactive mode
+  diffFilter      = delta --color-only               # use delta for `git add -p` / interactive diffs
+
+[delta]
+  navigate        = true                             # allow navigation between diff sections
+  side-by-side    = false                            # keep unified view
+  line-numbers    = true                             # show line numbers in diffs
+  line-numbers-left-style = "#75715e"               # muted for old line numbers
+  line-numbers-right-style = "#75715e"              # muted for new line numbers
+  line-numbers-zero-style = "#75715e"               # unchanged line numbers
+  line-numbers-plus-style = "#a6e22e"               # green for added line numbers
+  line-numbers-minus-style = "#f92672"              # urgent for removed line numbers
+  syntax-theme    = Monokai Extended
+  pager           = "less -FRX"                     # avoid bat when PAGER is set
+  paging          = auto                             # let delta handle paging
+  true-color      = always                           # ensure 24-bit colors for backgrounds
+  max-line-distance = 1.0                            # match inline changes more aggressively
+  word-diff-regex = "[^[:space:]]+"                 # highlight word-level changes
+  hunk-header-style = omit
+  file-style      = syntax
+  plus-style      = syntax                           # keep added line syntax colors
+  minus-style     = syntax                           # keep removed line syntax colors
+  plus-emph-style = "syntax #42492e"                # brighter green-tinted background for inline adds
+  minus-emph-style = "syntax #47272c"               # brighter red-tinted background for inline removals
+  plus-non-emph-style = syntax                       # keep non-emphasized text normal
+  minus-non-emph-style = syntax                      # keep non-emphasized text normal
+  inline-hint-style = "#75715e"                     # subtle for inline hint markers
+  whitespace-error-style = underline
