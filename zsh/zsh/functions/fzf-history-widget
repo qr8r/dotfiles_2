@@ -1,0 +1,18 @@
+## fzf-history-widget
+# Uses fzf to search shell history and replace the current command line.
+# Fallback: if fzf is unavailable, invoke incremental history search.
+fzf-history-widget() {
+  local selected
+
+  if (( ! $+commands[fzf] )); then
+    zle history-incremental-search-backward
+    return
+  fi
+
+  # Strip history numbers before sending to fzf, then load into the buffer.
+  selected=$(fc -l 1 | awk '{ $1=""; sub(/^ /, ""); print }' | fzf --tac --no-sort --height=40% --prompt='History> ' --query="$LBUFFER")
+  if [[ -n "$selected" ]]; then
+    LBUFFER="$selected"
+  fi
+  zle redisplay
+}
