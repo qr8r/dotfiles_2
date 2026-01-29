@@ -1,0 +1,24 @@
+font=FiraCode Nerd Font Mono
+font-size=12
+
+color=272822
+inside-color=272822cc
+inside-clear-color=272822cc
+inside-ver-color=272822cc
+inside-wrong-color=272822cc
+
+ring-color=66d9ef
+ring-clear-color=66d9ef
+ring-ver-color=66d9ef
+ring-wrong-color=f92672
+
+key-hl-color=ae81ff
+line-color=00000000
+separator-color=00000000
+text-color=f8f8f2
+text-clear-color=f8f8f2
+text-ver-color=f8f8f2
+text-wrong-color=f8f8f2
+clock
+timestr=%H:%M
+datestr=%a %b %d
