@@ -1,0 +1,42 @@
+[app]
+overall = { bg = "#272822" }
+
+[mgr]
+cwd = { fg = "#ae81ff", bg = "#272822" }
+border_symbol = "│"
+border_style = { fg = "#75715e", bg = "#272822" }
+marker_selected = { fg = "#272822", bg = "#66d9ef" }
+marker_marked = { fg = "#272822", bg = "#66d9ef" }
+count_selected = { fg = "#ae81ff", bg = "#272822" }
+count_copied = { fg = "#a6e22e", bg = "#272822" }
+count_cut = { fg = "#f92672", bg = "#272822" }
+
+[indicator]
+parent = { fg = "#ae81ff", bg = "#272822" }
+current = { fg = "#66d9ef", bg = "#272822" }
+preview = { fg = "#ae81ff", bg = "#272822" }
+
+[status]
+overall = { fg = "#ae81ff", bg = "#272822" }
+perm_type = { fg = "#ae81ff", bg = "#272822" }
+perm_read = { fg = "#ae81ff", bg = "#272822" }
+perm_write = { fg = "#ae81ff", bg = "#272822" }
+perm_exec = { fg = "#ae81ff", bg = "#272822" }
+perm_sep = { fg = "#ae81ff", bg = "#272822" }
+progress_label = { fg = "#272822", bg = "#ae81ff" }
+progress_normal = { fg = "#272822", bg = "#ae81ff" }
+progress_error = { fg = "#272822", bg = "#ae81ff" }
+
+[mode]
+normal_main = { fg = "#272822", bg = "#ae81ff", bold = true }
+normal_alt = { fg = "#272822", bg = "#ae81ff" }
+select_main = { fg = "#272822", bg = "#ae81ff", bold = true }
+select_alt = { fg = "#272822", bg = "#ae81ff" }
+unset_main = { fg = "#272822", bg = "#ae81ff", bold = true }
+unset_alt = { fg = "#272822", bg = "#ae81ff" }
+
+[filetype]
+rules = [
+  { url = "*/", fg = "#ae81ff" },
+  { url = "*", fg = "#ae81ff" }
+]

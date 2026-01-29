@@ -1,0 +1,68 @@
+{
+  "position": "bottom",
+  "height": 28,
+  "spacing": 10,
+  "modules-left": ["sway/workspaces", "sway/mode"],
+  "modules-center": ["clock"],
+  "modules-right": ["pulseaudio", "network", "cpu", "memory", "disk", "battery"],
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "format": "{name}"
+  },
+  "clock": {
+    "format": "<span foreground=\"#66d9ef\"></span>  {:%a %b %d  %H:%M}",
+    "markup": "pango"
+  },
+  "pulseaudio": {
+    "format": "<span foreground=\"#66d9ef\"></span>  {volume}%",
+    "format-muted": "<span foreground=\"#f92672\">󰸈</span>  muted",
+    "on-click": "pavucontrol",
+    "markup": "pango"
+  },
+  "network": {
+    "format-wifi": "<span foreground=\"#66d9ef\"></span>  {signalStrength}%",
+    "format-ethernet": "<span foreground=\"#66d9ef\">󰲝</span>  {ifname}",
+    "format-disconnected": "<span foreground=\"#f92672\">󰅛</span>  offline",
+    "tooltip-format-wifi": "SSID: {essid}\nSignal: {signalStrength}%\nIP: {ipaddr}\nDown: {bandwidthDownBits}\nUp: {bandwidthUpBits}",
+    "tooltip-format-ethernet": "Interface: {ifname}\nIP: {ipaddr}\nSpeed: {speed}Mb/s",
+    "tooltip-format-disconnected": "Disconnected",
+    "on-click": "swaymsg exec \"\\$term -e nmtui\"",
+    "markup": "pango"
+  },
+  "cpu": {
+    "interval": 5,
+    "format": "<span foreground=\"#66d9ef\">󰓅</span>  {usage}%",
+    "tooltip-format": "Load: {load}\nUsage: {usage}%\nAvg freq: {avg_frequency} GHz",
+    "on-click": "swaymsg exec \"\\$term -e btop\"",
+    "markup": "pango"
+  },
+  "memory": {
+    "interval": 5,
+    "format": "<span foreground=\"#66d9ef\">󰍛</span>  {percentage}%",
+    "tooltip-format": "Used: {used} / {total} ({percentage}%)",
+    "on-click": "swaymsg exec \"\\$term -e btop\"",
+    "markup": "pango"
+  },
+  "disk": {
+    "interval": 30,
+    "path": "/",
+    "format": "<span foreground=\"#66d9ef\">󱛟</span>  {percentage_used}%",
+    "tooltip-format": "Used: {used} / {total} ({percentage_used}%)\nFree: {free}",
+    "markup": "pango"
+  },
+  "battery": {
+    "battery": "BAT0",
+    "adapter": "AC",
+    "states": {
+      "warning": 25,
+      "critical": 10
+    },
+    "format": "<span foreground=\"#66d9ef\">{icon}</span>  {capacity}%",
+    "format-charging": "<span foreground=\"#66d9ef\">󰂄</span>  {capacity}%",
+    "format-plugged": "<span foreground=\"#66d9ef\">󱐋</span>  {capacity}%",
+    "format-warning": "<span foreground=\"#ae81ff\"></span>  {capacity}%",
+    "format-critical": "<span foreground=\"#f92672\"></span>  {capacity}%",
+    "format-icons": ["", "", "", "", ""],
+    "markup": "pango"
+  }
+}

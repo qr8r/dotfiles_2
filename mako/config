@@ -1,0 +1,16 @@
+font=FiraCode Nerd Font Mono 12
+background-color=#272822ff
+text-color=#75715eff
+border-color=#66d9efff
+border-size=2
+border-radius=6
+padding=10
+margin=10
+width=360
+height=120
+format=%s\n%b
+default-timeout=5000
+max-visible=3
+
+[urgency=high]
+border-color=#f92672ff

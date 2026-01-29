@@ -1,0 +1,64 @@
+* {
+  border: 0;
+  border-radius: 0;
+  min-height: 0;
+  font-family: "FiraCode Nerd Font Mono", "FiraCode Nerd Font", "Fira Code", monospace;
+  font-size: 13px;
+  padding: 0;
+  margin: 0;
+}
+
+window#waybar {
+  background: linear-gradient(90deg, rgba(39, 40, 34, 0.96), rgba(39, 40, 34, 0.82));
+  color: #f8f8f2;
+}
+
+#workspaces {
+  padding: 0 8px;
+}
+
+#workspaces button {
+  color: #75715e;
+  padding: 0 8px;
+  background: transparent;
+}
+
+#workspaces button.focused {
+  color: #272822;
+  background: #66d9ef;
+}
+
+#workspaces button.urgent {
+  color: #272822;
+  background: #f92672;
+}
+
+#clock,
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#disk,
+#battery,
+#tray,
+#mode {
+  padding: 0 10px;
+}
+
+#mode {
+  color: #272822;
+  background: #ae81ff;
+}
+
+#pulseaudio.muted,
+#network.disconnected {
+  color: #f92672;
+}
+
+#battery.warning {
+  color: #ae81ff;
+}
+
+#battery.critical {
+  color: #f92672;
+}
