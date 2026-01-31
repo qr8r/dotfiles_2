@@ -1,0 +1,32 @@
+return {
+  "stevearc/conform.nvim",
+  event = { "BufReadPre", "BufNewFile" },
+  opts = {
+    default_format_opts = {
+      lsp_format = "fallback",
+    },
+    format_on_save = false,
+    formatters_by_ft = {
+      bash = { "shfmt" },
+      sh = { "shfmt" },
+      dockerfile = { "dockfmt" },
+      containerfile = { "dockfmt" },
+      hcl = { "terraform_fmt" },
+      terraform = { "terraform_fmt" },
+      lua = { "stylua" },
+      ruby = { "rubocop" },
+      javascript = { "prettier" },
+      javascriptreact = { "prettier" },
+      json = { "prettier" },
+      jsonc = { "prettier" },
+      html = { "prettier" },
+      css = { "prettier" },
+      scss = { "prettier" },
+      markdown = { "prettier" },
+      nix = { "alejandra" },
+      yaml = { "prettier" },
+      typescript = { "prettier" },
+      typescriptreact = { "prettier" },
+    },
+  },
+}
