@@ -28,3 +28,13 @@ autoload -Uz fzf-history-widget
 zle -N fzf-history-widget
 
 bindkey '^R' fzf-history-widget
+
+_zsh_fzf_bind_ctrl_r() {
+  autoload -Uz fzf-history-widget
+  zle -N fzf-history-widget
+  bindkey -M viins '^R' fzf-history-widget
+  bindkey -M emacs '^R' fzf-history-widget
+}
+
+typeset -ga zvm_after_init_commands
+zvm_after_init_commands+=(_zsh_fzf_bind_ctrl_r)
