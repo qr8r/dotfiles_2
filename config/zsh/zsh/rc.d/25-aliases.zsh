@@ -1,4 +1,6 @@
 ## Aliases
+alias pi='HISTFILE="$HOME/.local/state/zsh/pi-history" command pi'
+
 # Prefer yq when tools call jq.
 if (( $+commands[yq] )); then
   alias jq='yq'
