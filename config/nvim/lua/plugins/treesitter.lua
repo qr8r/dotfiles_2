@@ -13,6 +13,8 @@ return {
         "json",
         "lua",
         "ruby",
+        "rust",
+        "toml",
         "tsx",
         "typescript",
         "yaml",

@@ -14,3 +14,7 @@ else
   export LESSHISTFILE=-
   export GIT_PAGER=delta
 fi
+
+# psql inherits PAGER by default. Keep bat as the general pager, but let psql
+# use less directly so small query results print without opening a pager.
+export PSQL_PAGER='less -FSX'

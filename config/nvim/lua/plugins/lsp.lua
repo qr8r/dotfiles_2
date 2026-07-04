@@ -15,9 +15,11 @@ return {
     "lua",
     "nix",
     "ruby",
+    "rust",
     "scss",
     "sh",
     "terraform",
+    "toml",
     "typescript",
     "typescriptreact",
     "yaml",
@@ -57,6 +59,10 @@ return {
 
       require("mason-lspconfig").setup({
         automatic_installation = true,
+        ensure_installed = {
+          "rust_analyzer",
+          "taplo",
+        },
       })
     end
 
@@ -72,6 +78,13 @@ return {
 
     vim.diagnostic.config({
       severity_sort = true,
+      underline = true,
+      update_in_insert = false,
+      virtual_text = {
+        prefix = "●",
+        source = "if_many",
+        spacing = 2,
+      },
       signs = {
         text = {
           [vim.diagnostic.severity.ERROR] = "▌",
@@ -152,11 +165,15 @@ return {
       return original_open_float(buffer, options)
     end
 
-    local on_attach = function(_, bufnr)
+    local on_attach = function(client, bufnr)
       local keymap = vim.keymap.set
       local opts = { buffer = bufnr }
 
       vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
+
+      if vim.lsp.inlay_hint and client.server_capabilities.inlayHintProvider then
+        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+      end
 
       keymap("n", "gd", vim.lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "LSP definition" }))
       keymap("n", "gr", vim.lsp.buf.references, vim.tbl_extend("force", opts, { desc = "LSP references" }))
@@ -223,6 +240,24 @@ return {
       end,
       ruby = function()
         setup_server("ruby_lsp", { on_attach = on_attach })
+      end,
+      rust = function()
+        setup_server("rust_analyzer", {
+          on_attach = on_attach,
+          settings = {
+            ["rust-analyzer"] = {
+              cargo = {
+                allFeatures = true,
+              },
+              check = {
+                command = "clippy",
+              },
+            },
+          },
+        })
+      end,
+      toml = function()
+        setup_server("taplo", { on_attach = on_attach })
       end,
       javascript = function()
         setup_server("ts_ls", { on_attach = on_attach })
