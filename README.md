@@ -29,6 +29,8 @@ packages=(
   helm-ls
   lua-language-server
   nixd
+  rust-analyzer
+  taplo
   terraform-ls
   yaml-language-server
 
@@ -54,6 +56,7 @@ packages=(
   node
   npm
   ruby
+  rustup-init
 
   # Yazi
   chafa
@@ -63,6 +66,8 @@ packages=(
 )
 
 brew install "${packages[@]}"
+rustup-init -y
+rustup component add clippy rustfmt
 ```
 
 Stow the macOS configs (two targets):
@@ -106,6 +111,8 @@ stow --dir="/path/to/dotfiles" --target="$HOME" \
     helm-ls
     lua-language-server
     nixd
+    rust-analyzer
+    taplo
     terraform-ls
     yaml-language-server
 
@@ -131,6 +138,12 @@ stow --dir="/path/to/dotfiles" --target="$HOME" \
     nodejs
     npm
     ruby
+
+    # Rust toolchain
+    cargo
+    clippy
+    rustc
+    rustfmt
 
     # Yazi
     chafa

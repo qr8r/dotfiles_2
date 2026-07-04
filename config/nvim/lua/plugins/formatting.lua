@@ -15,6 +15,8 @@ return {
       terraform = { "terraform_fmt" },
       lua = { "stylua" },
       ruby = { "rubocop" },
+      rust = { "rustfmt" },
+      toml = { "taplo" },
       javascript = { "prettier" },
       javascriptreact = { "prettier" },
       json = { "prettier" },
