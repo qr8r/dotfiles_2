@@ -15,6 +15,12 @@ return {
       [types.lsp.CompletionItemKind.Keyword] = true,
     }
 
+    local function expand_snippet(args)
+      if vim.snippet then
+        vim.snippet.expand(args.body)
+      end
+    end
+
     cmp.setup({
       completion = {
         autocomplete = false,
@@ -74,6 +80,19 @@ return {
           cmp.config.compare.order,
         },
       },
+    })
+
+    cmp.setup.filetype("rust", {
+      completion = {
+        autocomplete = { cmp.TriggerEvent.TextChanged },
+      },
+      snippet = {
+        expand = expand_snippet,
+      },
+      sources = cmp.config.sources({
+        { name = "nvim_lsp", keyword_length = 1, priority = 1000 },
+        { name = "buffer", keyword_length = 4, priority = 250 },
+      }),
     })
   end,
 }
