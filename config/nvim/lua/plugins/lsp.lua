@@ -248,9 +248,36 @@ return {
             ["rust-analyzer"] = {
               cargo = {
                 allFeatures = true,
+                buildScripts = {
+                  enable = true,
+                },
               },
               check = {
+                allTargets = true,
                 command = "clippy",
+              },
+              completion = {
+                autoimport = {
+                  enable = true,
+                },
+                autoself = {
+                  enable = true,
+                },
+                callable = {
+                  snippets = "fill_arguments",
+                },
+                postfix = {
+                  enable = true,
+                },
+              },
+              diagnostics = {
+                enable = true,
+                styleLints = {
+                  enable = true,
+                },
+              },
+              procMacro = {
+                enable = true,
               },
             },
           },
