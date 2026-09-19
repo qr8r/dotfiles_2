@@ -1,11 +1,7 @@
 [init]
   defaultBranch     = trunk
 
-
-
 [push]
-
-
   default         = upstream                         # push current branch to its upstream by default
   autoSetupRemote = true                             # set upstream automatically on first push (not on branch creation)
   followTags      = true                             # push annotated tags reachable from pushed commits

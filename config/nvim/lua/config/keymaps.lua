@@ -1,42 +1,27 @@
-local keymap = vim.keymap.set
+vim.keymap.set("n", "<leader>h", "<cmd>nohlsearch<cr>", { desc = "Clear search highlight" })
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Yank to clipboard" })
+vim.keymap.set("n", "<leader>n", "<cmd>set number!<cr>", { desc = "Toggle line numbers" })
+vim.keymap.set("n", "<leader>d", "<C-w>d", { desc = "Show diagnostic" })
 
-keymap("n", "<leader>/f", "<cmd>Telescope find_files<cr>", { desc = "Find files" })
-keymap("n", "<leader>/b", "<cmd>Telescope buffers<cr>", { desc = "Find buffers" })
-keymap("n", "<leader>/g", "<cmd>Telescope live_grep<cr>", { desc = "Live grep" })
-keymap("n", "<leader>/s", "<cmd>Telescope lsp_document_symbols<cr>", { desc = "Document symbols" })
-keymap("n", "<leader>/t", "<cmd>Telescope help_tags<cr>", { desc = "Help tags" })
-keymap("n", "<leader>/?", "<cmd>Telescope keymaps<cr>", { desc = "Keymaps" })
+local function open_terminal()
+  vim.cmd("botright new")
+  vim.cmd("terminal")
+  vim.cmd("startinsert")
+end
 
-keymap("n", "<leader>h", "<cmd>nohlsearch<cr>", { desc = "Clear search highlight" })
+vim.keymap.set("t", "<Esc><Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
+vim.keymap.set("n", "<leader>t", open_terminal, { desc = "Open terminal" })
+vim.keymap.set("n", "<leader><leader>", open_terminal, { desc = "Open terminal" })
 
-keymap("n", "<leader>n", function()
-  local enabled = vim.opt.number:get()
-  local next_value = not enabled
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move left" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move down" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move up" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move right" })
+vim.keymap.set("n", "<leader>=", "<C-w>=", { desc = "Equalize windows" })
+vim.keymap.set("n", "<leader>_", "<C-w>_", { desc = "Maximize window height" })
+vim.keymap.set("n", "<leader>|", "<C-w>|", { desc = "Maximize window width" })
 
-  vim.opt.number = next_value
-  vim.opt.relativenumber = false
-
-  for _, win in ipairs(vim.api.nvim_list_wins()) do
-    vim.api.nvim_win_set_option(win, "number", next_value)
-    vim.api.nvim_win_set_option(win, "relativenumber", false)
-  end
-end, { desc = "Toggle line numbers" })
-
-keymap("n", "<leader>bc", function()
-  for _, buffer in ipairs(vim.fn.getbufinfo({ buflisted = 1 })) do
-    if buffer.name == "" then
-      vim.cmd("bdelete " .. buffer.bufnr)
-    end
-  end
-end, { desc = "Close unnamed buffers" })
-
-keymap({ "n", "v" }, "<leader>c", '"+y', { desc = "Yank to clipboard" })
-
-keymap({ "n", "i", "v" }, "<Up>", "<Nop>", { desc = "Disable Up" })
-keymap({ "n", "i", "v" }, "<Down>", "<Nop>", { desc = "Disable Down" })
-keymap({ "n", "i", "v" }, "<Left>", "<Nop>", { desc = "Disable Left" })
-keymap({ "n", "i", "v" }, "<Right>", "<Nop>", { desc = "Disable Right" })
-
-keymap("n", "<leader>ff", function()
-  require("conform").format({ async = true })
-end, { desc = "Format file" })
+vim.keymap.set("t", "<C-h>", [[<C-\><C-n><C-w>h]], { desc = "Move left" })
+vim.keymap.set("t", "<C-j>", [[<C-\><C-n><C-w>j]], { desc = "Move down" })
+vim.keymap.set("t", "<C-k>", [[<C-\><C-n><C-w>k]], { desc = "Move up" })
+vim.keymap.set("t", "<C-l>", [[<C-\><C-n><C-w>l]], { desc = "Move right" })

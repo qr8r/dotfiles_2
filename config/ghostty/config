@@ -1,6 +1,7 @@
 # Monokai palette
 font-family = "FiraCode Nerd Font Mono"
 font-size = 10
+font-thicken = true
 
 background = 272822
 foreground = f8f8f2

@@ -1,5 +1,8 @@
 local opt = vim.opt
 
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 opt.number = false
 opt.relativenumber = false
 opt.cursorline = false
@@ -13,13 +16,12 @@ opt.tabstop = 2
 opt.softtabstop = 2
 opt.smartindent = true
 
-opt.wrap = false
+opt.wrap = true
 opt.scrolloff = 8
 opt.sidescrolloff = 8
 
 opt.splitright = true
 opt.splitbelow = true
-opt.laststatus = 3
 
 opt.ignorecase = true
 opt.smartcase = true
@@ -34,19 +36,10 @@ opt.writebackup = false
 opt.updatetime = 300
 opt.timeoutlen = 400
 opt.mouse = ""
+opt.cmdheight = 0
 
 opt.list = true
-opt.listchars = { tab = "> ", trail = ".", extends = ">", precedes = "<" }
-opt.formatoptions = "crqnj"
+opt.listchars = { tab = "> ", trail = "." }
+opt.formatoptions = "crqnj" -- Be helpful with comments: continue them on Enter, format them with gq, handle numbered lists, and join comment lines cleanly.
 
-opt.fillchars:append({
-  vert = "┆",
-  vertleft = "┆",
-  vertright = "┆",
-  verthoriz = "┆",
-  horiz = "┄",
-  horizup = "┄",
-  horizdown = "┄",
-})
-
-opt.completeopt = { "menu", "menuone", "noinsert" }
+opt.completeopt = { "menuone", "noselect", "popup" }
