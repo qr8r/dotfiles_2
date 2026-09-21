@@ -43,3 +43,11 @@ opt.listchars = { tab = "> ", trail = "." }
 opt.formatoptions = "crqnj" -- Be helpful with comments: continue them on Enter, format them with gq, handle numbered lists, and join comment lines cleanly.
 
 opt.completeopt = { "menuone", "noselect", "popup" }
+
+opt.foldmethod = "expr"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+opt.foldtext = ""
+opt.foldlevel = 99
+opt.foldlevelstart = 99
+opt.foldcolumn = "1"
+opt.fillchars:append({ fold = " ", foldopen = " ", foldclose = "❯", foldsep = " ", foldinner = " " })

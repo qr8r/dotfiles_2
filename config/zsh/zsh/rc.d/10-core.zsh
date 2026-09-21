@@ -15,6 +15,9 @@ fpath=(
 
 ## Cache and state directories
 # Ensure XDG locations exist before we use completion caches and history.
+: "${XDG_CACHE_HOME:=$HOME/.cache}"
+: "${XDG_STATE_HOME:=$HOME/.local/state}"
+
 if [[ ! -d "$XDG_CACHE_HOME/zsh" ]]; then
   mkdir -p "$XDG_CACHE_HOME/zsh"
 fi

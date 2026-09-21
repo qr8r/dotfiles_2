@@ -1,5 +1,6 @@
 ## History behavior
 # Keep a large history shared across sessions and minimize duplicates/noise.
+HISTFILE="$XDG_STATE_HOME/zsh/history"
 HISTSIZE=10000
 SAVEHIST=10000
 setopt append_history
